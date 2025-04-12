@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Caught</title>
+  <style>
+    body {
+      background-color: black;
+      color: red;
+      font-family: monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 48px;
+      animation: glitch 0.8s infinite;
+      text-shadow: 0 0 5px red, 0 0 10px crimson;
+    }
+
+    p {
+      font-size: 18px;
+      color: #ff6666;
+      margin-top: 20px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes glitch {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-2px); }
+      50% { transform: translateX(2px); }
+      75% { transform: translateX(-1px); }
+      100% { transform: translateX(0); }
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes screenFlicker {
+      0%, 100% { background-color: black; }
+      50% { background-color: #110000; }
+    }
+
+    body.flicker {
+      animation: screenFlicker 0.1s infinite;
+    }
+  </style>
+  <script>
+    setTimeout(() => {
+      window.location.href = "index.html";
+    }, 4000);
+  </script>
+</head>
+<body>
+  <h1>⚠️ I know what you are, cheater.</h1>
+  <p>Returning to safety...</p>
+
+  <audio id="buzzSound" src="soundeffects/buzz.mp3"></audio>
+
+  <script>
+    const buzzSound = document.getElementById("buzzSound");
+
+    function playBuzzOnInteraction() {
+      buzzSound.play().catch(error => {
+        console.error("Audio playback failed:", error);
+      });
+
+      document.body.classList.add("flicker");
+
+      document.body.removeEventListener("click", playBuzzOnInteraction);
+      document.body.removeEventListener("keydown", playBuzzOnInteraction);
+    }
+
+    document.body.addEventListener("click", playBuzzOnInteraction);
+    document.body.addEventListener("keydown", playBuzzOnInteraction);
+  </script>
+  <script>
+    if (sessionStorage.getItem("auth2") !== "true") {
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>

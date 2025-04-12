@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>You Did It</title>
+  <style>
+    body {
+      background-color: black;
+      color: lime;
+      font-family: monospace;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 48px;
+    }
+    p {
+      font-size: 18px;
+      color: #00ffcc;
+    }
+  </style>
+  <script>
+    if (sessionStorage.getItem("authenticated") !== "true") {
+      window.location.href = "cheater.html";
+      sessionStorage.setItem("auth2", "true");
+    }
+  </script>
+</head>
+<body>
+  <h1>✔️ All Plasma Orbs Collected!</h1>
+  <p>You’ve proven yourself worthy of the Coyote's final riddle.</p>
+  <p>Stay tuned for <strong>Rogueblox Riddle 3</strong>...</p>
+
+  <audio id="successAudio" src="soundeffects/correct.mp3"></audio>
+
+  <script>
+    const successAudio = document.getElementById("successAudio");
+
+    function playAudioOnInteraction() {
+      successAudio.play().catch(error => {
+        console.error("Audio playback failed:", error);
+      });
+
+      document.body.removeEventListener("click", playAudioOnInteraction);
+      document.body.removeEventListener("keydown", playAudioOnInteraction);
+    }
+
+    document.body.addEventListener("click", playAudioOnInteraction);
+    document.body.addEventListener("keydown", playAudioOnInteraction);
+  </script>
+</body>
+</html>
