@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>You Did It</title>
@@ -19,39 +20,44 @@
     h1 {
       font-size: 48px;
     }
+
     p {
       font-size: 18px;
       color: #00ffcc;
     }
   </style>
   <script>
-    if (sessionStorage.getItem("authenticated") !== "true") {
+    if (sessionStorage.getItem("authenticated") !== btoa("true")) {
       window.location.href = "cheater.html";
       sessionStorage.setItem("auth2", "true");
+    } else {
+      sessionStorage.removeItem("authenticated");
     }
   </script>
 </head>
+
 <body>
   <h1>✔️ All Plasma Orbs Collected!</h1>
   <p>You’ve proven yourself worthy of the Coyote's final riddle.</p>
   <p>Stay tuned for <strong>Rogueblox Riddle 3</strong>...</p>
 
-  <audio id="successAudio" src="soundeffects/correct.mp3"></audio>
+  <audio id="bgMusic" src="soundeffects/bgmusic.mp3" loop preload="auto"></audio>
 
   <script>
-    const successAudio = document.getElementById("successAudio");
+    const bgMusic = document.getElementById("bgMusic");
 
-    function playAudioOnInteraction() {
-      successAudio.play().catch(error => {
+    function playMusicOnInteraction() {
+      bgMusic.volume = 0.5;
+      bgMusic.play().catch(error => {
         console.error("Audio playback failed:", error);
       });
 
-      document.body.removeEventListener("click", playAudioOnInteraction);
-      document.body.removeEventListener("keydown", playAudioOnInteraction);
+      document.body.removeEventListener("click", playMusicOnInteraction);
+      document.body.removeEventListener("keydown", playMusicOnInteraction);
     }
 
-    document.body.addEventListener("click", playAudioOnInteraction);
-    document.body.addEventListener("keydown", playAudioOnInteraction);
+    document.body.addEventListener("click", playMusicOnInteraction);
+    document.body.addEventListener("keydown", playMusicOnInteraction);
   </script>
 </body>
 </html>
