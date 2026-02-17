@@ -210,21 +210,3 @@ volumeSlider.addEventListener("input", () => {
     bgMusic.volume = volumeSlider.value;
 });
 
-function playHoverOSound() {
-    const hoverOSound = document.getElementById("hoverOSound");
-    hoverOSound.currentTime = 0;
-    hoverOSound.loop = true;
-    hoverOSound.play();
-}
-
-function stopHoverOSound() {
-    const hoverOSound = document.getElementById("hoverOSound");
-    hoverOSound.pause();
-    hoverOSound.currentTime = 0;
-}
-
-document.querySelectorAll(".orb").forEach(orb => {
-    orb.addEventListener("mouseenter", playHoverOSound);
-    orb.addEventListener("mouseleave", stopHoverOSound);
-
-});
