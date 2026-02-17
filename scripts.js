@@ -16,7 +16,7 @@ function crptyString(text) {
 
 const orbHashes = {
 1: "0858d974deae352fcd99a8b63fd6d8b1b8d3cff63d81b89b6d40726cb88ddc28",
-2: "edacbc854c960eccadaeff8970b3af304caeeff297535e980148bf5ba3c6b411",
+2: "6f679698556220cfbdce6eb5a8ea1e794bc85473a52b6f533e7e8598c3a289f5",
 3: "99e5c5fbe217ebdf4b64be68c35b260fe3c940ae639fb30ccbf7c9f18b953c85",
 4: "d419943286c1501493a52a0f74aaa7e61d183a3a1460d22333e3e192e3c2fb7f",
 5: "3d4739b5b4441635b245af22ad509e8f8384a6f5ac4f8d7e887a4a9d77dfa2b5",
@@ -226,4 +226,5 @@ function stopHoverOSound() {
 document.querySelectorAll(".orb").forEach(orb => {
     orb.addEventListener("mouseenter", playHoverOSound);
     orb.addEventListener("mouseleave", stopHoverOSound);
+
 });
