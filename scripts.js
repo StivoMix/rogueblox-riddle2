@@ -22,7 +22,7 @@ const orbHashes = {
 5: "3d4739b5b4441635b245af22ad509e8f8384a6f5ac4f8d7e887a4a9d77dfa2b5",
 6: "0e408a44d72aa3ba09fb86ad2ba510a759581954affd4ac7ed85236d78a67711"
 };
-const finalHash = "f619da3480fe82d3a09ac2b6e9235197c3948cc64b6c5fd2085596c4655a357e";
+const finalHash = "4300294adb21239bbf16df2392fe2c7ac57d2fd0d4691299c3d967a07ce5bd2f";
 const orbStates = JSON.parse(localStorage.getItem('orbStates')) || { 1: false, 2: false, 3: false, 4: false, 5: false, 6: false };
 const orbCodes = JSON.parse(localStorage.getItem('orbCodes')) || {};
 let orb1Clicks = 0;
@@ -209,4 +209,5 @@ musicToggle.addEventListener("change", () => {
 volumeSlider.addEventListener("input", () => {
     bgMusic.volume = volumeSlider.value;
 });
+
 
