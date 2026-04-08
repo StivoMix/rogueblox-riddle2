@@ -112,37 +112,12 @@ body {
     margin-top: 10px;
     font-size: 14px;
     color: #cccccc;
+    white-space: pre-line;
   }
   
   #final-section {
     margin-top: 40px;
     display: none;
-  }
-  
-  #prowlercryptor {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 250px;
-    background-color: #111;
-    padding: 10px;
-    border: 1px solid lime;
-    border-radius: 8px;
-    font-size: 14px;
-    color: #00ffcc;
-    z-index: 999;
-  }
-  
-  #prowlercryptor input {
-    width: 85%;
-    font-size: 14px;
-    margin-bottom: 5px;
-  }
-  
-  #prowlercryptor button {
-    font-size: 14px;
-    width: 90%;
-    margin-bottom: 5px;
   }
   
   #reset-button-container {
