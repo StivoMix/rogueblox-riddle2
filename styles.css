@@ -114,6 +114,14 @@ body {
     color: #cccccc;
     white-space: pre-line;
   }
+
+  #finalHint {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #cccccc;
+    white-space: pre-line;
+    display: none;
+  }
   
   #final-section {
     margin-top: 40px;
