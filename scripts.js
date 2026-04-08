@@ -6,23 +6,14 @@ async function sha256(text) {
     return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
-function crptyString(text) {
-    let result = '';
-    for (let index = 0; index < text.length; index++) {
-        result += String.fromCharCode(text.charCodeAt(index) + index);
-    }
-    return result;
-}
-
 const orbHashes = {
-1: "0858d974deae352fcd99a8b63fd6d8b1b8d3cff63d81b89b6d40726cb88ddc28",
-2: "6f679698556220cfbdce6eb5a8ea1e794bc85473a52b6f533e7e8598c3a289f5",
-3: "99e5c5fbe217ebdf4b64be68c35b260fe3c940ae639fb30ccbf7c9f18b953c85",
-4: "d419943286c1501493a52a0f74aaa7e61d183a3a1460d22333e3e192e3c2fb7f",
+2: "d49b0c040fd87532f032f4409e1af8cdb61b5929bb236b3c1f18d2978fa8ac61",
+3: "7467cb862f48ac6ca60696b165134ac270df81371c8763f1de25a78a0da24b51",
+4: "11eed40bb457ee437ab2bd533029d9c957dae9a8694d34182bdd0b9a09db6948",
 5: "3d4739b5b4441635b245af22ad509e8f8384a6f5ac4f8d7e887a4a9d77dfa2b5",
-6: "0e408a44d72aa3ba09fb86ad2ba510a759581954affd4ac7ed85236d78a67711"
+6: "fbe450db8d3d7c979b89d17d49244ecd7f26b3f2402a48d4b0be934ff8254397"
 };
-const finalHash = "b39d219e615ff52458701957d515c972073d85ba1b4b68d55544fa66e357c61a";
+const finalHash = "0c6a4db935efffad10ca1677958cdcb8a5955d49d1ff8a84b6839c2aeb029f67";
 const orbStates = JSON.parse(localStorage.getItem('orbStates')) || { 1: false, 2: false, 3: false, 4: false, 5: false, 6: false };
 const orbCodes = JSON.parse(localStorage.getItem('orbCodes')) || {};
 let orb1Clicks = 0;
@@ -53,7 +44,7 @@ function clickOrb(orbNum) {
     if (orbNum === 1 && !orbStates[1]) {
         orb1Clicks++;
         if (orb1Clicks >= 10) {
-        markOrbUnlocked(1, crptyString("HNUIN<CL="));
+        markOrbUnlocked(1);
         }
     }
 }
@@ -82,12 +73,48 @@ async function submitCode() {
 function showHint() {
     const val = document.getElementById("hintSelect").value;
     const hints = {
-        1: "Reach out tenfold to find the howl...",
-        2: "Leap into the void of tundra and shout the sacred words.",
-        3: "The prowler encrypts again... for the third time.",
-        4: "I am in every banner. Four letters long.",
-        5: "He who taught humanity the art of ultimate assassination.",
-        6: "A fortress shaped like fallen angels, my very own..."
+        1: `The code is not a number found in books or deep in caves,
+            Nor is it hidden in the shadows where the hollow behaves.
+            To move ahead, you must ignore the five who stand in line,
+            And focus on the pioneer, the one who starts the design.
+            It holds the weight of all your fingers, a double-digit soul,
+            A cycle finished, a decade reached, to make the vision whole.
+            Don't seek a sequence, don't seek a key, or symbols in the dark,
+            Just wake the First with constant taps to light the final spark`,
+        2: `I am built of gears and metal skin,
+            Born from a forge where the humans begin.
+            I need no breath, I feel no pain,
+            And oil, not blood, flows through my vein.
+            I am the future in a child's frame,
+            Tell me now, what is my name?`,
+        3: `I wear no crown, yet I bring the law,
+            A silent threat that makes the chaotic drawl.
+            Through the desert sands, I seek my foe,
+            Trading silver to make my justice grow.
+            Order is my weapon, vengeance in my soul,
+            Which class plays this role?`,
+        4: `I rule a realm of permanent shade,
+            Where all dead souls are finally laid.
+            When your crimson journey comes to an end,
+            I am the keeper, I am the friend.
+            Give me your past, your burdens, your strife,
+            And I shall grant you a brand new life.
+            Who am I?`,
+        5: `I dwell where the frozen tundra sighs,
+            In a cathedral built of darkened skies.
+            A whisper, a flash, a breath you take,
+            I am the final choice you make.
+            I hold the steel that kings must fear,
+            And teach the craft of a silent tear.
+            For the Blackmoon, I bring the night,
+            Who am I?`,
+        6: `I am the change that the daybreak brings,
+            A soul that flies on solar wings.
+            Not born of earth, but of sky and flame,
+            Helergic power is my true name.
+            With every breath, the heat I sow,
+            The Sun’s own light begins to glow.
+            What am I?`
     };
     document.getElementById("hintText").textContent = hints[val];
 }
@@ -118,12 +145,6 @@ function resetOrbs() {
     localStorage.removeItem('orbStates');
     localStorage.removeItem('orbCodes');
     location.reload();
-}
-
-function runEncrypt() { 
-    const input = document.getElementById("cryptInput").value.trim();
-    const result = crptyString(input);
-    document.getElementById("cryptOutput").textContent = result || "Encrypted result will appear here.";
 }
 
 window.onload = () => {
